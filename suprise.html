@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Surprise for Cuttu ❤️</title>
+
+<style>
+body {
+  background: linear-gradient(to bottom, #f5d5dc, #fff0f3);
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color: #444;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  background: #ff8fab;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4d6d;
+  transform: scale(1.05);
+}
+
+#surpriseMessage {
+  font-size: 28px;
+  margin-top: 30px;
+  opacity: 0;
+  transition: 1s;
+}
+
+.heart {
+  position: fixed;
+  color: #ff4d6d;
+  font-size: 24px;
+  animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="surprise.html">Surprise</a>
+<a href="letter.html">Letter</a>
+</nav>
+
+<body>
+
+<h1>Hey Cuttu ❤️</h1>
+
+<p>I have something special for you...</p>
+
+<button onclick="showSurprise()">Click for your surprise 🎁</button>
+
+<div id="surpriseMessage">
+You are not just my birthday boy...  
+<br><br>
+You are my safe place, my happiness, my forever ❤️
+<br><br>
+I love you, Ehsaas.
+</div>
+
+<script>
+
+function showSurprise(){
+
+  document.getElementById("surpriseMessage").style.opacity = "1";
+
+  setInterval(createHeart, 300);
+
+}
+
+function createHeart(){
+
+  const heart = document.createElement("div");
+
+  heart.innerHTML = "❤️";
+
+  heart.classList.add("heart");
+
+  heart.style.left = Math.random() * window.innerWidth + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 4000);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Cuttu ❤️</title>
+
+<style>
+body {
+  background: #f5d5dc;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color: #444;
+  overflow: hidden;
+}
+
+nav {
+  background: white;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+  margin: 10px;
+  text-decoration: none;
+  color: #ff4d6d;
+  font-weight: bold;
+}
+
+h1 {
+  margin-top: 40px;
+  font-size: 40px;
+}
+
+#question {
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: #ff8fab;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  margin: 15px;
+}
+
+button:hover {
+  background: #ff4d6d;
+}
+
+#bouquet {
+  font-size: 42px;
+  margin-top: 25px;
+}
+
+#message {
+  font-size: 22px;
+  margin-top: 20px;
+  color: #d6336c;
+}
+
+.flower {
+  position: fixed;
+  top: -50px;
+  font-size: 25px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="suprise.html">suprise</a>
+<a href="letter.html">Letter</a>
+</nav>
+
+<h1>Happy Birthday Ehsaas ❤️</h1>
+
+<p>My Cuttu, this little corner of internet belongs only to you.</p>
+
+<h2 id="question">Will u b my birthday boy forever? 🎂</h2>
+
+<button onclick="yesClicked()">Yes ❤️</button>
+
+<button id="noBtn" onmouseover="moveNo()">No 😢</button>
+
+<div id="bouquet"></div>
+
+<p id="message"></p>
+
+<!-- YOUTUBE MUSIC -->
+<iframe id="musicPlayer"
+width="0"
+height="0"
+allow="autoplay"
+src="">
+</iframe>
+
+<script>
+
+let flowerCount = 0;
+
+// YES CLICK
+function yesClicked(){
+
+  // START MUSIC
+  document.getElementById("musicPlayer").src =
+  "https://www.youtube.com/embed/1tiHpkRbWf8?autoplay=1&loop=1&playlist=1tiHpkRbWf8";
+
+  // CHANGE QUESTION TEXT
+  document.getElementById("question").innerHTML =
+  "You are my birthday boy forever, Cuttu ❤️";
+
+  // BUILD BOUQUET
+  let flowerCount = 0;
+
+  const interval = setInterval(() => {
+
+    document.getElementById("bouquet").innerHTML += "🌹";
+
+    flowerCount++;
+
+    if(flowerCount >= 12){
+
+      clearInterval(interval);
+
+      document.getElementById("message").innerHTML =
+      "This bouquet is for you, Ehsaas ❤️";
+
+    }
+
+  }, 200);
+
+
+
+
+}
+
+
+// NO BUTTON FLOAT
+function moveNo(){
+
+  const btn = document.getElementById("noBtn");
+
+  btn.style.position = "absolute";
+
+  btn.style.top =
+  Math.random() * (window.innerHeight - 50) + "px";
+
+  btn.style.left =
+  Math.random() * (window.innerWidth - 100) + "px";
+
+}
+
+
+// FALLING FLOWERS
+function fallingFlowers(){
+
+  const flower = document.createElement("div");
+
+  flower.innerHTML = "🌸";
+  flower.classList.add("flower");
+
+  flower.style.left =
+  Math.random() * window.innerWidth + "px";
+
+  flower.style.animationDuration =
+  (Math.random() * 3 + 3) + "s";
+
+  document.body.appendChild(flower);
+
+  setTimeout(() => flower.remove(), 5000);
+
+}
+
+setInterval(fallingFlowers, 500);
+
+</script>
+
+</body>
+</html>
