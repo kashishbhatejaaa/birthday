@@ -1,15 +1,21 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <title>Happy Birthday Cuttu ❤️</title>
 
+<!-- IMPORT SAME FONT AS letter.html -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
+
 body {
   background: #f5d5dc;
   font-family: 'Dancing Script', cursive;
   text-align: center;
   color: #444;
   overflow: hidden;
+  cursor: pointer;
 }
 
 nav {
@@ -23,27 +29,33 @@ nav a {
   text-decoration: none;
   color: #ff4d6d;
   font-weight: bold;
+  font-size: 20px;
 }
 
 h1 {
   margin-top: 40px;
-  font-size: 40px;
+  font-size: 48px;
+}
+
+p {
+  font-size: 24px;
 }
 
 #question {
-  font-size: 28px;
+  font-size: 32px;
   margin-top: 30px;
 }
 
 button {
   padding: 15px 30px;
-  font-size: 18px;
+  font-size: 20px;
   background: #ff8fab;
   border: none;
   border-radius: 25px;
   color: white;
   cursor: pointer;
   margin: 15px;
+  font-family: 'Dancing Script', cursive;
 }
 
 button:hover {
@@ -56,7 +68,7 @@ button:hover {
 }
 
 #message {
-  font-size: 22px;
+  font-size: 26px;
   margin-top: 20px;
   color: #d6336c;
 }
@@ -73,14 +85,15 @@ button:hover {
     transform: translateY(110vh);
   }
 }
+
 </style>
 </head>
 
-<body>
+<body onclick="startMusicOnce()">
 
 <nav>
 <a href="index.html">Home</a>
-<a href="suprise.html">suprise</a>
+<a href="suprise.html">Suprise</a>
 <a href="letter.html">Letter</a>
 </nav>
 
@@ -98,53 +111,66 @@ button:hover {
 
 <p id="message"></p>
 
-<!-- YOUTUBE MUSIC -->
+
+<!-- YOUTUBE MUSIC PLAYER -->
 <iframe id="musicPlayer"
 width="0"
 height="0"
 allow="autoplay"
-src="">
+style="display:none;">
 </iframe>
+
 
 <script>
 
-let flowerCount = 0;
+let musicStarted = false;
+
+
+// START MUSIC ON FIRST TAP (WORKS ON PHONE)
+function startMusicOnce(){
+
+  if(!musicStarted){
+
+    document.getElementById("musicPlayer").src =
+    "https://www.youtube.com/embed/1tiHpkRbWf8?autoplay=1&loop=1&playlist=1tiHpkRbWf8";
+
+    musicStarted = true;
+
+  }
+
+}
+
+
 
 // YES CLICK
 function yesClicked(){
 
-  // START MUSIC
-  document.getElementById("musicPlayer").src =
-  "https://www.youtube.com/embed/1tiHpkRbWf8?autoplay=1&loop=1&playlist=1tiHpkRbWf8";
+  startMusicOnce();
 
-  // CHANGE QUESTION TEXT
   document.getElementById("question").innerHTML =
   "You are my birthday boy forever, Cuttu ❤️";
 
-  // BUILD BOUQUET
-  let flowerCount = 0;
+  let count = 0;
 
   const interval = setInterval(() => {
 
     document.getElementById("bouquet").innerHTML += "🌹";
 
-    flowerCount++;
+    count++;
 
-    if(flowerCount >= 12){
+    if(count >= 12){
 
       clearInterval(interval);
 
       document.getElementById("message").innerHTML =
-      "This bouquet is for you, Ehsaas ❤️";
+      "This bouquet is only for you, Ehsaas ❤️";
 
     }
 
   }, 200);
 
-
-
-
 }
+
 
 
 // NO BUTTON FLOAT
@@ -163,12 +189,14 @@ function moveNo(){
 }
 
 
+
 // FALLING FLOWERS
 function fallingFlowers(){
 
   const flower = document.createElement("div");
 
   flower.innerHTML = "🌸";
+
   flower.classList.add("flower");
 
   flower.style.left =
@@ -189,3 +217,4 @@ setInterval(fallingFlowers, 500);
 
 </body>
 </html>
+
